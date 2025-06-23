@@ -1,0 +1,400 @@
+"use client"
+
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import {
+  Github,
+  Linkedin,
+  Mail,
+  ExternalLink,
+  Code,
+  Database,
+  Brain,
+  Heart,
+  Activity,
+  Stethoscope,
+  ArrowRight,
+  Users,
+  Award,
+  TrendingUp,
+  Zap,
+  Shield,
+  Globe,
+  Filter,
+  X,
+  Menu,
+  Droplets,
+  Dna,
+} from "lucide-react"
+import Link from "next/link"
+import { useState, useEffect, useRef } from "react"
+
+// Project data with enhanced filtering properties
+const allProjects = [
+  {
+    id: 1,
+    title: "Wireless Blackbox for PSV Monitoring",
+    description: "Award-winning IoT solution for public service vehicles that monitors critical parameters in real-time.",
+    image: "bg-gradient-to-br from-red-500 via-pink-500 to-purple-600",
+    icon: Activity,
+    tags: ["ESP32", "IoT", "GPS", "GSM", "KiCad", "ThingSpeak", "C++", "PCB Design"],
+    status: "Production",
+    domain: "IoT & Transportation",
+    type: "featured",
+    githubUrl: "https://github.com/Jack-khalif/WirelessBlackBox",
+  },
+  // Add other projects here...
+]
+
+// Custom hook for intersection observer
+function useIntersectionObserver(options = {}) {
+  const [isIntersecting, setIsIntersecting] = useState(false)
+  const ref = useRef(null)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      setIsIntersecting(entry.isIntersecting)
+    }, options)
+
+    if (ref.current) {
+      observer.observe(ref.current)
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current)
+      }
+    }
+  }, [options])
+
+  return [ref, isIntersecting]
+}
+
+export default function Portfolio() {
+  const [isVisible, setIsVisible] = useState(false)
+  const [activeSection, setActiveSection] = useState("hero")
+  const [pageLoaded, setPageLoaded] = useState(false)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+  const [nextSection, setNextSection] = useState("")
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
+  // Intersection observer refs for different sections
+  const [heroRef, heroInView] = useIntersectionObserver()
+  const [projectsRef, projectsInView] = useIntersectionObserver()
+  const [skillsRef, skillsInView] = useIntersectionObserver()
+  const [contactRef, contactInView] = useIntersectionObserver()
+
+  useEffect(() => {
+    // Page load animation
+    const timer = setTimeout(() => {
+      setPageLoaded(true)
+      setIsVisible(true)
+    }, 100)
+
+    const handleScroll = () => {
+      const sections = ["hero", "projects", "skills", "contact"]
+      const scrollPosition = window.scrollY + 100
+
+      for (const section of sections) {
+        const element = document.getElementById(section)
+        if (element) {
+          const { offsetTop, offsetHeight } = element
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(section)
+            break
+          }
+        }
+      }
+    }
+
+
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+      clearTimeout(timer)
+    }
+  }, [])
+
+  const scrollToSection = (sectionId: string) => {
+    setIsTransitioning(true)
+    setNextSection(sectionId)
+    
+    setTimeout(() => {
+      const element = document.getElementById(sectionId)
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+      
+      setTimeout(() => {
+        setActiveSection(sectionId)
+        setIsTransitioning(false)
+      }, 500)
+    }, 300)
+  }
+
+  return (
+    <div className={`min-h-screen bg-slate-50 transition-all duration-1000 ${pageLoaded ? "opacity-100" : "opacity-0"} ${isTransitioning ? "transitioning" : ""}`}>
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full bg-white/95 backdrop-blur-lg border-b border-slate-200/50 z-50 transition-all duration-700 ${pageLoaded ? "translate-y-0" : "-translate-y-full"} ${isTransitioning ? "nav-transitioning" : ""}`}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center py-4">
+            <div className={`text-lg sm:text-xl font-bold text-slate-900 tracking-tight transition-all duration-500 delay-300 ${pageLoaded ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-4"}`}>
+              Mugwe Waithaka
+            </div>
+            
+            {/* Desktop Navigation */}
+            <div className="hidden md:flex items-center space-x-8">
+              {["Projects", "Skills", "Contact"].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => scrollToSection(item.toLowerCase())}
+                  className={`text-sm font-medium transition-all duration-300 ${
+                    activeSection === item.toLowerCase()
+                      ? "text-blue-600"
+                      : "text-slate-600 hover:text-slate-900"
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+            
+            {/* Mobile menu button */}
+            <div className="md:hidden">
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                className="text-slate-600 hover:text-slate-900"
+                aria-label="Toggle menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-slate-200">
+            <div className="px-4 py-3 space-y-3">
+              {["Projects", "Skills", "Contact"].map((item) => (
+                <button
+                  key={item}
+                  onClick={() => {
+                    scrollToSection(item.toLowerCase())
+                    setMobileMenuOpen(false)
+                  }}
+                  className={`block w-full text-left px-3 py-2 rounded-md text-sm font-medium ${
+                    activeSection === item.toLowerCase()
+                      ? "bg-blue-50 text-blue-600"
+                      : "text-slate-700 hover:bg-slate-50"
+                  }`}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+      </nav>
+
+      {/* Hero Section */}
+      <section id="hero" ref={heroRef} className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-blue-100 opacity-50"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 sm:py-32 relative z-10 text-center">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            Hi, I'm Mugwe Waithaka
+          </h1>
+          <p className="text-xl sm:text-2xl text-slate-600 mb-8 max-w-3xl mx-auto">
+            Healthcare Technologist & Full-Stack Developer
+          </p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4">
+            <Button
+              onClick={() => scrollToSection("projects")}
+              className="px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105"
+            >
+              View My Work
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => scrollToSection("contact")}
+              className="px-8 py-6 text-lg font-medium transition-all duration-300 hover:scale-105"
+            >
+              Get In Touch
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" ref={projectsRef} className="py-16 sm:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">My Projects</h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              A selection of my recent work and contributions
+            </p>
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+            {allProjects
+              .filter((p) => p.type === "featured")
+              .map((project) => (
+                <div
+                  key={project.id}
+                  className="group relative overflow-hidden rounded-xl border border-slate-200 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className={`${project.image} h-48 w-full`}>
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-transparent"></div>
+                    <div className="relative z-10 p-4">
+                      <Badge
+                        className={`text-xs ${
+                          project.status === "Production"
+                            ? "bg-emerald-500"
+                            : project.status === "Clinical Trial"
+                            ? "bg-blue-500"
+                            : "bg-purple-500"
+                        } text-white`}
+                      >
+                        {project.status}
+                      </Badge>
+                    </div>
+                  </div>
+
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2">{project.title}</h3>
+                    <p className="text-slate-600 mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.tags.slice(0, 3).map((tag) => (
+                        <Badge key={tag} variant="outline" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                    <Button
+                      variant="outline"
+                      className="w-full group-hover:bg-slate-50"
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        if (project.githubUrl) {
+                          window.open(project.githubUrl, "_blank", "noopener,noreferrer")
+                        }
+                      }}
+                    >
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Project
+                    </Button>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section id="skills" ref={skillsRef} className="py-16 sm:py-20 lg:py-24 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Skills & Expertise</h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Technologies and tools I work with
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            {/* Add your skills here */}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section id="contact" ref={contactRef} className="py-16 sm:py-20 lg:py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Get In Touch</h2>
+            <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
+              Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <a
+              href="mailto:mugwe@example.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 border border-slate-200"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-blue-600 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <Mail className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">Email Me</h3>
+                <p className="text-slate-600 mb-4">mugwe@example.com</p>
+                <span className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-300">
+                  Send a message
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/mugwe-waithaka"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative overflow-hidden rounded-xl bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-md hover:-translate-y-1 border border-slate-200"
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-400 to-blue-500 opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+              <div className="relative z-10">
+                <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mb-4">
+                  <Linkedin className="w-6 h-6 text-blue-600" />
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mb-2">LinkedIn</h3>
+                <p className="text-slate-600 mb-4">Connect on LinkedIn</p>
+                <span className="inline-flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors duration-300">
+                  View Profile
+                  <ArrowRight className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1" />
+                </span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-900 text-slate-400 py-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <div className="flex items-center space-x-4 mb-4 md:mb-0">
+              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
+                <span className="text-slate-900 font-bold">MW</span>
+              </div>
+              <span className="text-sm">© {new Date().getFullYear()} Mugwe Waithaka. All rights reserved.</span>
+            </div>
+            <div className="flex space-x-6">
+              <a
+                href="https://github.com/yourusername"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white transition-colors duration-300"
+                aria-label="GitHub"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com/in/mugwe-waithaka"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-400 hover:text-white transition-colors duration-300"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  )
+}
