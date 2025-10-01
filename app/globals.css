@@ -55,7 +55,9 @@
   }
   body {
     @apply bg-background text-foreground;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
   }
 }
 
@@ -88,12 +90,12 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground)/0.3);
+  background: hsl(var(--muted-foreground) / 0.3);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--muted-foreground)/0.5);
+  background: hsl(var(--muted-foreground) / 0.5);
 }
 
 /* Card hover effect */
@@ -107,9 +109,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    hsl(var(--primary)/0.1) 0%,
+    hsl(var(--primary) / 0.1) 0%,
     transparent 50%,
-    hsl(var(--primary)/0.1) 100%
+    hsl(var(--primary) / 0.1) 100%
   );
   opacity: 0;
   transition: opacity 0.3s ease;
@@ -128,7 +130,7 @@
   top: 0;
   background: radial-gradient(
     circle at 50% 0%,
-    hsl(var(--primary)/0.3) 0%,
+    hsl(var(--primary) / 0.3) 0%,
     transparent 50%
   );
   opacity: 0.5;
@@ -144,7 +146,11 @@
 /* Hero section */
 .hero-section {
   @apply relative min-h-screen flex items-center justify-center overflow-hidden;
-  background: radial-gradient(circle at 10% 20%, rgba(5, 10, 24, 0.8) 0%, rgba(5, 10, 24, 0.9) 90%);
+  background: radial-gradient(
+    circle at 10% 20%,
+    rgba(5, 10, 24, 0.8) 0%,
+    rgba(5, 10, 24, 0.9) 90%
+  );
 }
 
 .hero-content {
@@ -306,7 +312,11 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+  background: linear-gradient(
+    135deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(16, 185, 129, 0.1)
+  );
   backdrop-filter: blur(8px);
   z-index: 9999;
   opacity: 0;
@@ -336,13 +346,17 @@ body {
 }
 
 .nav-active::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.1));
+  background: linear-gradient(
+    45deg,
+    rgba(59, 130, 246, 0.1),
+    rgba(16, 185, 129, 0.1)
+  );
   border-radius: inherit;
   z-index: -1;
   animation: pulse 2s infinite;

@@ -29,11 +29,11 @@ async function optimizeImage(inputPath, outputPath) {
 async function processDirectory(directory) {
   try {
     const files = await readdir(directory);
-    
+
     for (const file of files) {
       const filePath = path.join(directory, file);
       const fileStat = await stat(filePath);
-      
+
       if (fileStat.isDirectory()) {
         await processDirectory(filePath);
       } else if (IMAGE_EXTENSIONS.includes(path.extname(file).toLowerCase())) {
