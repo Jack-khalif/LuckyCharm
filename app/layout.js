@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Jackson Mugwe - Software Engineer & Data Scientist',
+  title: 'Jackson Mugwe - Software & Biomedical  Engineer ',
   description:
     'Building the future of healthcare through innovative technology solutions',
   generator: 'v0.dev',
@@ -17,7 +17,7 @@ export const metadata = {
   creator: 'Jackson Mugwe',
   publisher: 'Jackson Mugwe',
   openGraph: {
-    title: 'Jackson Mugwe - Software Engineer & Data Scientist',
+    title: 'Jackson Mugwe - Software & Biomedical Engineer',
     description:
       'Building the future of healthcare through innovative technology solutions',
     type: 'website',
