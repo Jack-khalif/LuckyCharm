@@ -1,7 +1,7 @@
 // components/animations/Transitions.tsx
-"use client"
+'use client';
 
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion';
 import { Variants } from 'framer-motion';
 
 export const fadeIn: Variants = {
@@ -12,9 +12,9 @@ export const fadeIn: Variants = {
     transition: {
       duration: 0.6,
       ease: [0.16, 1, 0.3, 1],
-      delay: 0.1 * i
-    }
-  })
+      delay: 0.1 * i,
+    },
+  }),
 };
 
 export const staggerContainer: Variants = {
@@ -23,9 +23,9 @@ export const staggerContainer: Variants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.1,
-      delayChildren: 0.1
-    }
-  }
+      delayChildren: 0.1,
+    },
+  },
 };
 
 export const slideInFromLeft: Variants = {
@@ -36,9 +36,9 @@ export const slideInFromLeft: Variants = {
     transition: {
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1],
-      delay: 0.1 * i
-    }
-  })
+      delay: 0.1 * i,
+    },
+  }),
 };
 
 export const slideInFromRight: Variants = {
@@ -49,9 +49,9 @@ export const slideInFromRight: Variants = {
     transition: {
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1],
-      delay: 0.1 * i
-    }
-  })
+      delay: 0.1 * i,
+    },
+  }),
 };
 
 export const scaleUp: Variants = {
@@ -62,9 +62,9 @@ export const scaleUp: Variants = {
     transition: {
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1],
-      delay: 0.1 * i
-    }
-  })
+      delay: 0.1 * i,
+    },
+  }),
 };
 
 export const fadeInUp: Variants = {
@@ -75,7 +75,7 @@ export const fadeInUp: Variants = {
     transition: {
       duration: 0.6,
       ease: [0.22, 1, 0.36, 1],
-      delay: 0.1 * i
-    }
-  })
+      delay: 0.1 * i,
+    },
+  }),
 };

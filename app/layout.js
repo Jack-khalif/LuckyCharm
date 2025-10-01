@@ -1,17 +1,26 @@
-import "./globals.css"
+import './globals.css';
 
 export const metadata = {
-  title: "Jackson Mugwe - Software Engineer & Data Scientist",
-  description: "Building the future of healthcare through innovative technology solutions",
-  generator: "v0.dev",
-  keywords: ["portfolio", "software engineer", "AI", "machine learning", "health tech", "data science"],
-  authors: [{ name: "Jackson Mugwe" }],
-  creator: "Jackson Mugwe",
-  publisher: "Jackson Mugwe",
+  title: 'Jackson Mugwe - Software Engineer & Data Scientist',
+  description:
+    'Building the future of healthcare through innovative technology solutions',
+  generator: 'v0.dev',
+  keywords: [
+    'portfolio',
+    'software engineer',
+    'AI',
+    'machine learning',
+    'health tech',
+    'data science',
+  ],
+  authors: [{ name: 'Jackson Mugwe' }],
+  creator: 'Jackson Mugwe',
+  publisher: 'Jackson Mugwe',
   openGraph: {
-    title: "Jackson Mugwe - Software Engineer & Data Scientist",
-    description: "Building the future of healthcare through innovative technology solutions",
-    type: "website",
+    title: 'Jackson Mugwe - Software Engineer & Data Scientist',
+    description:
+      'Building the future of healthcare through innovative technology solutions',
+    type: 'website',
   },
   robots: {
     index: true,
@@ -24,8 +33,7 @@ export const metadata = {
       'max-snippet': -1,
     },
   },
-
-}
+};
 
 export const viewport = {
   width: 'device-width',
@@ -38,15 +46,17 @@ export default function RootLayout({ children }) {
     <html lang="en" className="scroll-smooth">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
         <link
           href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
       </head>
-      <body className="antialiased bg-slate-50">
-        {children}
-      </body>
+      <body className="antialiased bg-slate-50">{children}</body>
     </html>
-  )
+  );
 }
