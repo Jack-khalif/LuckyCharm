@@ -71,7 +71,7 @@ export default function Portfolio() {
               <a href="#projects" className="px-8 py-4 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all flex items-center">
                 Explore the Lab <ArrowRight className="w-5 h-5 ml-2" />
               </a>
-              <a href="https://substack.com" target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-slate-900 font-bold border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all transform rotate-1">
+              <a href="https://substack.com/@healthcodejournal" target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-slate-900 font-bold border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all transform rotate-1">
                 Read my Field Notes
               </a>
             </div>
