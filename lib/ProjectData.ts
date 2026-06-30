@@ -1,4 +1,5 @@
-import { Activity, Brain, Code, Stethoscope, Heart, Mic, Award, Users } from 'lucide-react';
+import { Activity, Brain, Code, Stethoscope, Heart, Mic, Award, Users, Ticket, Quote } from 'lucide-react';
+import { pipeline } from 'node:stream';
 
 export const allProjects = [
   {
@@ -84,6 +85,34 @@ export const allProjects = [
   },
   {
     id: 5,
+    title: "Tuliza AI Pipeline",
+    icon: Code,
+    description: "Engineered an automated end-to-end testing suite using Playwright to validate UI components across Chromium, Firefox, and WebKit. Integrated a full CI/CD pipeline via GitHub Actions to execute regression tests on every push, ensuring production-grade reliability.",
+    tags: ["Playwright", "CI/CD", "Vite", "React", "TypeScript"],
+    githubUrl: "https://github.com/TULIZA-AI/Tuliza-Frontend-v2",
+    image: "/placeholder-logo.png" // Make sure to add a placeholder or real image path here
+  },
+  
+  {
+    id: 6,
+    title: "Eventify Platform",
+    icon: Ticket,
+    description: "A full-stack event management and ticketing system built to handle high-volume user registrations. Features responsive, accessible interfaces and robust backend routing for real-time interaction.",
+    tags: ["React", "Node.js", "Express", "Full-Stack"],
+    githubUrl: "https://github.com/Jack-khalif/eventify",
+    image: "/eventify.jpeg"
+  },
+   {
+    id: 7,
+    title: "RO-seizing and triaging tool",
+    icon: Quote,
+    description: "An AI-powered platform that automates reverse osmosis (RO) system sizing, proposal generation, and water lab report analysis — built for Davis & Shirtliff engineers and technicians.",
+    tags: ["React", "Node.js", "Express", "Full-Stack"],
+    githubUrl: "https://github.com/Jack-khalif/Water-RO-AITool",
+    image: "/davisRO.png"
+  },
+  {
+    id: 8,
     title: '23rd Bio-X Fellowship',
     description: 'Technical fellow at the International Summer Academy on Bio-X in Davos, Switzerland.',
     image: '/davos.jpg',
@@ -95,7 +124,7 @@ export const allProjects = [
     githubUrl: '#',
   },
   {
-    id: 6,
+    id: 9,
     title: 'IEEE EMBS Global HealthcareForum Summit Organization',
     description: 'Organized the Global Healthcare Forum and Entrepreneurship Summit, securing funding and managing international coordination.',
     image: '/metin.png',

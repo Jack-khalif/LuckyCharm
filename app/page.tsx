@@ -24,11 +24,11 @@ export default function Portfolio() {
       <nav className="w-full border-b-2 border-slate-900 bg-[#fdfbf7] z-50 p-4 sticky top-0">
         <div className="max-w-7xl mx-auto flex justify-between items-center">
           <div className="text-2xl font-black tracking-tighter uppercase transform -rotate-1">
-            Jackson.Mugwe()
+            Jackson.Mugwe 
           </div>
           <div className="hidden md:flex space-x-6 font-bold">
-            <a href="#hero" className="hover:underline decoration-wavy decoration-2 underline-offset-4">Lab Notes</a>
-            <a href="#projects" className="hover:underline decoration-wavy decoration-2 underline-offset-4">Projects</a>
+            <a href="#hero" className="hover:underline decoration-wavy decoration-2 underline-offset-4"> Home</a>
+            <a href="#projects" className="hover:underline decoration-wavy decoration-2 underline-offset-4">Work</a>
             <a href="#contact" className="hover:underline decoration-wavy decoration-2 underline-offset-4">Ping Me</a>
           </div>
         </div>
@@ -48,31 +48,31 @@ export default function Portfolio() {
             <RoughNotationGroup show={pageLoaded}>
               <h1 className="text-5xl md:text-7xl font-black mb-6 leading-tight uppercase">
                 <RoughNotation type="highlight" color="#fef08a" animationDuration={1200} padding={[0, 10]}>
-                  Biomedical Engineer
+                   Engineer
                 </RoughNotation>
                 <br/>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-slate-600 mt-2 block">
                   <RoughNotation type="underline" color="#0f172a" strokeWidth={3} animationDuration={1000}>
-                    & Software Hobbyist
+                    & Full stack software developer
                   </RoughNotation>
                 </span>
               </h1>
 
               <p className="text-2xl md:text-3xl mb-10 font-medium leading-relaxed border-l-4 border-slate-900 pl-6">
-                Pioneering the intersection of healthcare and technology through Identification of needs , Biomedical Signal Processing, and  Medical Software Engineering (SaMD). 
+               Architecting scalable web and mobile systems, robust data pipelines, and automated QA systems.
                 <br/><br/>
                 <RoughNotation type="box" color="#ef4444" strokeWidth={2} animationDuration={1500} padding={[5, 5]}>
                   Documenting the journey, the failures, and the breakthroughs
-                </RoughNotation> of building AI-driven tools for the real world.
+                </RoughNotation> {' '}of building high-performance tech—with specialized experience in IoT and Medical Software (SaMD).
               </p>
             </RoughNotationGroup>
 
             <div className="flex flex-wrap gap-4">
               <a href="#projects" className="px-8 py-4 bg-slate-900 text-white font-bold border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all flex items-center">
-                Explore the Lab <ArrowRight className="w-5 h-5 ml-2" />
+                View my Featured work <ArrowRight className="w-5 h-5 ml-2" />
               </a>
-              <a href="https://substack.com/@healthcodejournal" target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-slate-900 font-bold border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all transform rotate-1">
-                Read my Field Notes
+              <a href="https://github.com/jack-khalif" target="_blank" rel="noreferrer" className="px-8 py-4 bg-white text-slate-900 font-bold border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all transform rotate-1">
+                Review my Github
               </a>
             </div>
           </div>
@@ -163,7 +163,7 @@ export default function Portfolio() {
       <section id="contact" className="py-20 px-6 max-w-4xl mx-auto text-center border-t-2 border-slate-900 border-dashed">
         <h2 className="text-4xl font-black mb-6 uppercase transform -rotate-1">Let's Pioneer Together</h2>
         <p className="text-xl font-medium mb-10">
-          Interested in MedTech, high-frequency data pipelines, or just want to talk about scaling your medtech projects? Drop a line.
+          Interested in Scalable impactful systems, high-frequency data pipelines, or just want to talk about scaling your medtech projects? Drop a line.
         </p>
         <div className="flex justify-center gap-6">
           <a href="mailto:mugwewaithaka2@gmail.com" className="p-4 bg-yellow-200 border-2 border-slate-900 shadow-[4px_4px_0px_0px_#0f172a] hover:translate-y-1 hover:shadow-[2px_2px_0px_0px_#0f172a] transition-all">

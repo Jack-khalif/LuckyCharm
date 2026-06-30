@@ -9,8 +9,8 @@ const caveat = Caveat({
 });
 
 export const metadata = {
-  title: "Jackson Mugwe | Biomedical Engineer",
-  description: "Portfolio of Jackson Mugwe, MedTech Innovator",
+  title: "Jackson Mugwe | Engineer",
+  description: "Portfolio of Jackson Mugwe, Greatest Engineer",
 };
 
 export default function RootLayout({ children }) {
